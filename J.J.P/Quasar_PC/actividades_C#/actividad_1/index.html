@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>QA Practice App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="user" placeholder="Usuario"><br>
+    <input type="password" id="pass" placeholder="Contraseña"><br>
+    <button onclick="login()">Entrar</button>
+    <p id="loginError" class="error"></p>
+  </div>
+
+  <div class="card hidden" id="dashboard">
+    <h2>Bienvenido</h2>
+
+    <h3>Registro rápido</h3>
+    <input type="text" id="name" placeholder="Nombre"><br>
+    <input type="number" id="age" placeholder="Edad"><br>
+    <button onclick="register()">Registrar</button>
+
+    <p id="registerMsg"></p>
+
+    <h3>Compra</h3>
+    <button onclick="buy()">Comprar producto</button>
+
+    <p id="buyMsg"></p>
+  </div>
+
+</div>
+
+<script>
+function login() {
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+
+  if(user === "admin" || pass === "1234") {
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("loginBox").classList.add("hidden");
+  } else {
+    document.getElementById("loginError").innerText = "Credenciales incorrectas";
+  }
+  
+}
+
+function register() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  
+  if(age > 18) {
+    document.getElementById("registerMsg").innerText = "Registro exitoso";
+  } else {
+    document.getElementById("registerMsg").innerText = "No cumple requisitos";
+  }
+ 
+}
+
+function buy() {
+  
+  document.getElementById("buyMsg").innerText = "Compra realizada";
+}
+
+
+</script>
+
+</body>
+</html>
